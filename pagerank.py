@@ -165,8 +165,10 @@ def iterate_pagerank(corpus, damping_factor):
             for link in corpus:
                 if web in corpus[link]:
                     sigma += rank[link]/len(corpus[link])
+                elif not corpus[link]:
+                    sigma += rank[link]/len(corpus)
             prob = (1-damping_factor)/len(corpus) + damping_factor*sigma
-            if abs(rank[web] - prob) < 0.001:
+            if abs(rank[web] - prob) <= 0.001:
                 count += 1
             rank[web] = prob
 
