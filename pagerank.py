@@ -123,7 +123,7 @@ def sample_pagerank(corpus, damping_factor, n):
     page = random.choice(list(corpus.keys()))
     prank[page] += 1/n
     for i in range(n):
-        dist = transition_model(corpus,page,damping_factor)
+        dist = transition_model(corpus, page, damping_factor)
         page = random.choices(list(dist.keys()), weights=list(dist.values()), k=1)[0]
         prank[page] += 1/n
 
@@ -180,7 +180,3 @@ def iterate_pagerank(corpus, damping_factor):
 
 if __name__ == "__main__":
     main()
-    # corpus = {"1.html": {"2.html", "3.html",}, "2.html": {"3.html"}, "3.html": {"2.html"}}
-    # damping_factor = DAMPING
-    # page = '1.html'
-    # print(transition_model(corpus, page, damping_factor))
